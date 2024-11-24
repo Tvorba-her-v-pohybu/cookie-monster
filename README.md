@@ -1,2 +1,2 @@
 # cookie-monster
-Projekt Bočka a Mikyho
+Projekt Bořka a Mikyho
