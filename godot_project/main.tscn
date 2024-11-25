@@ -7597,6 +7597,7 @@ texture = ExtResource("2_mtvoh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 scale = Vector2(0.48, 0.48)
+visible = false
 shape = SubResource("CircleShape2D_mbsvm")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
