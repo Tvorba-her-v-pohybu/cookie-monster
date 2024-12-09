@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckah71pcxw3l"
-path="res://.godot/imported/main_char.png-2bc25d2c42be0f44f4b9f15ae3a00a37.ctex"
+uid="uid://c4t64ewg0exxc"
+path="res://.godot/imported/toilet.png-e5aaad1d4d0d91fd26c2cc2bb8f8bb39.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://main_char.png"
-dest_files=["res://.godot/imported/main_char.png-2bc25d2c42be0f44f4b9f15ae3a00a37.ctex"]
+source_file="res://toilet.png"
+dest_files=["res://.godot/imported/toilet.png-e5aaad1d4d0d91fd26c2cc2bb8f8bb39.ctex"]
 
 [params]
 
