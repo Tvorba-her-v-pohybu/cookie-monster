@@ -1,20 +1,61 @@
-[gd_scene load_steps=4 format=3 uid="uid://bo0r70ejqfu7x"]
+[gd_scene load_steps=10 format=3 uid="uid://bo0r70ejqfu7x"]
 
 [ext_resource type="Script" path="res://enemy.gd" id="1_eoa08"]
-[ext_resource type="Texture2D" uid="uid://ckah71pcxw3l" path="res://main_char.png" id="2_qnls1"]
+[ext_resource type="Texture2D" uid="uid://i3d4hsm3djba" path="res://obrazky/doge/doge1.png" id="2_deql3"]
+[ext_resource type="Texture2D" uid="uid://iwutnr2fhjcc" path="res://obrazky/doge/doge2.png" id="3_7gqdy"]
+[ext_resource type="Texture2D" uid="uid://xqu5uwjrbc0n" path="res://obrazky/doge/doge3.png" id="4_2wtfq"]
+[ext_resource type="Texture2D" uid="uid://bwf16yrqwic7" path="res://obrazky/doge/doge4.png" id="5_w3jat"]
+[ext_resource type="Texture2D" uid="uid://dkybdtjulrdx7" path="res://obrazky/doge/doge5.png" id="6_adtav"]
+[ext_resource type="Texture2D" uid="uid://85kxf2h3iy6y" path="res://obrazky/doge/doge6.png" id="7_ji7ay"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kl45v"]
 radius = 20.0
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_0mvte"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_deql3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_7gqdy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_deql3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_7gqdy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_2wtfq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_w3jat")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_adtav")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ji7ay")
+}],
+"loop": false,
+"name": &"utok",
+"speed": 10.0
+}]
+
 [node name="Enemy" type="CharacterBody2D"]
-position = Vector2(3, 101)
 script = ExtResource("1_eoa08")
 
 [node name="MainChar" type="Sprite2D" parent="."]
-modulate = Color(1, 0, 0, 1)
+visible = false
 rotation = -1.5708
 scale = Vector2(0.506825, 0.506825)
-texture = ExtResource("2_qnls1")
+texture = ExtResource("2_deql3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_kl45v")
@@ -22,3 +63,11 @@ shape = SubResource("CircleShape2D_kl45v")
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 avoidance_enabled = true
 radius = 20.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(16, -9.53674e-07)
+rotation = 1.5708
+scale = Vector2(0.248246, 0.248246)
+sprite_frames = SubResource("SpriteFrames_0mvte")
+autoplay = "default"
+frame_progress = 0.630834

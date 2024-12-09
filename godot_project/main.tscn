@@ -7604,6 +7604,7 @@ tile_map_data = PackedByteArray("AAD1/w0AAAAYABIAAAD1/w4AAAAOABMAAAD2/w0AAAAOABM
 tile_set = SubResource("TileSet_lmocr")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="NavigationRegion2D"]
+position = Vector2(-1, 109)
 script = ExtResource("1_dyfk0")
 
 [node name="MainChar" type="Sprite2D" parent="NavigationRegion2D/CharacterBody2D"]
