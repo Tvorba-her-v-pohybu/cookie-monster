@@ -1,10 +1,46 @@
-[gd_scene load_steps=4 format=3 uid="uid://i2w6rdpteogq"]
+[gd_scene load_steps=7 format=3 uid="uid://i2w6rdpteogq"]
 
 [ext_resource type="Script" path="res://character_body_2d.gd" id="1_u5pnm"]
 [ext_resource type="Texture2D" uid="uid://ckah71pcxw3l" path="res://main_char.png" id="2_rfbov"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mbsvm"]
 radius = 19.2354
+
+[sub_resource type="Animation" id="Animation_edmay"]
+resource_name = "dmg"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainChar:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.233333, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0.397701, 0.329255, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ec4l3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainChar:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l2alf"]
+_data = {
+"RESET": SubResource("Animation_ec4l3"),
+"dmg": SubResource("Animation_edmay")
+}
 
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["player"]]
 position = Vector2(-1, 109)
@@ -20,3 +56,8 @@ scale = Vector2(0.48, 0.48)
 shape = SubResource("CircleShape2D_mbsvm")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_l2alf")
+}

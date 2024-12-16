@@ -7620,7 +7620,7 @@ shape = SubResource("CircleShape2D_mbsvm")
 
 [node name="Enemy" parent="NavigationRegion2D" node_paths=PackedStringArray("target") instance=ExtResource("4_ca23p")]
 position = Vector2(-6, 5)
-scale = Vector2(0.624096, -0.88108)
+scale = Vector2(0.784096, -0.88108)
 target = NodePath("../CharacterBody2D")
 
 [node name="Enemy2" parent="NavigationRegion2D" node_paths=PackedStringArray("target") instance=ExtResource("4_ca23p")]
