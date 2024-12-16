@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://duc2ch0tq0b2k"]
+[gd_scene load_steps=11 format=4 uid="uid://duc2ch0tq0b2k"]
 
 [ext_resource type="PackedScene" uid="uid://i2w6rdpteogq" path="res://main_char/main_char.tscn" id="2_co45l"]
 [ext_resource type="Texture2D" uid="uid://dnjb8p3e4rnuh" path="res://enviroment/Tilesheet/tilesheet_complete.png" id="3_mp1t1"]
@@ -7583,6 +7583,12 @@ tile_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_xtisu")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_drlnb"]
+bg_color = Color(0, 0, 0, 0.203922)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u184g"]
+bg_color = Color(0.318479, 0.703791, 0.165333, 1)
+
 [node name="Node2D" type="Node2D"]
 position = Vector2(-10, -2)
 
@@ -7646,3 +7652,26 @@ texture = ExtResource("4_sh0mo")
 position = Vector2(-302, 19)
 rotation = 1.59054
 texture = ExtResource("5_vngxh")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 52.0
+offset_top = -69.0
+offset_right = 92.0
+offset_bottom = -46.0
+grow_vertical = 0
+text = "hp:"
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
+custom_minimum_size = Vector2(200, 0)
+offset_left = 87.0
+offset_top = 581.0
+offset_right = 287.0
+offset_bottom = 608.0
+theme_override_styles/background = SubResource("StyleBoxFlat_drlnb")
+theme_override_styles/fill = SubResource("StyleBoxFlat_u184g")
+value = 50.0
