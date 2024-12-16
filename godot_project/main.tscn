@@ -1,7 +1,6 @@
-[gd_scene load_steps=11 format=4 uid="uid://duc2ch0tq0b2k"]
+[gd_scene load_steps=9 format=4 uid="uid://duc2ch0tq0b2k"]
 
-[ext_resource type="Script" path="res://character_body_2d.gd" id="1_dyfk0"]
-[ext_resource type="Texture2D" uid="uid://ckah71pcxw3l" path="res://main_char.png" id="2_mtvoh"]
+[ext_resource type="PackedScene" uid="uid://i2w6rdpteogq" path="res://main_char/main_char.tscn" id="2_co45l"]
 [ext_resource type="Texture2D" uid="uid://dnjb8p3e4rnuh" path="res://enviroment/Tilesheet/tilesheet_complete.png" id="3_mp1t1"]
 [ext_resource type="PackedScene" uid="uid://bo0r70ejqfu7x" path="res://enemy.tscn" id="4_ca23p"]
 [ext_resource type="Texture2D" uid="uid://cuf46acom73is" path="res://obrazky/postel_krvava.png" id="4_sh0mo"]
@@ -7584,9 +7583,6 @@ tile_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_xtisu")
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_mbsvm"]
-radius = 19.2354
-
 [node name="Node2D" type="Node2D"]
 position = Vector2(-10, -2)
 
@@ -7600,60 +7596,45 @@ tile_set = SubResource("TileSet_lmocr")
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="NavigationRegion2D"]
 position = Vector2(-1, 5)
-tile_map_data = PackedByteArray("AAD1/w0AAAAYABIAAAD1/w4AAAAOABMAAAD2/w0AAAAOABMAAGD1/wwAAAAOABMAADD0/w0AAAAOABMAAFD7/wYAAAAVABMAADD6/wQAAAAYAAkAAAD8/wIAAAAYAAgAAAD7/wIAAAATAAsAAAD6/wMAAAAZAAkAAAD6/wAAAAAWAAsAAAD//wYAAAAWAAsAAADx/wwAAAAWAAsAAAD3/wgAAAAWAAsAAAD4/w8AAAAWAAsAAADx/xIAAAAWAAsAAADu/w8AAAAWAAsAAAD4/xMAAAAWAAsAAADq/xIAAAAWAAsAAADs/wgAAAATAAYAAADr/wgAAAASAAYAAADr/wkAAAASAAcAAADs/wkAAAATAAcAAADp/woAAAAUAAcAAADr/wsAAAAUAAcAAADp/wgAAAAXAAcAAADo/wgAAAAXAAcAAADo/wkAAAAXAAcAAADs/woAAAAXAAcAAADq/wkAAAAZAAQAAADp/wsAAAAZAAQAAADo/wsAAAAWAAgAAADq/wgAAAAWAAgAAADq/woAAAAUAAYAAADs/wsAAAAZAAQAAADq/wsAAAAXAAgAAADp/wkAAAAXAAgAAADr/woAAAAXAAcAAADo/woAAAAXAAcAAADp//L/AAATABMAAGDp//P/AAASABMAAGDk//X/AAAVAAUAAADj//b/AAAUAAUAAADj//X/AAAVAAkAAADl//b/AAAWAAsAAADk//T/AAAZAAcAAADn//b/AAAYAA8AAADo//b/AAAYAA8AAADp//b/AAAYAA8AAADn//X/AAAPABMAADDo//X/AAAPABMAADDp//X/AAAPABMAADDn//P/AAAPABEAAFDn//L/AAAOABEAAFDn//T/AAAQABEAAFDk//L/AAAXAAMAADDl//L/AAAXAAMAADDm//L/AAAXAAMAADDk//P/AAAXAAIAAADl//P/AAAXAAIAAADm//P/AAAXAAIAAAD7/woAAAARAAMAAAD7/wkAAAARAAMAAAD7/wgAAAARAAMAAAD6/wgAAAARAAMAAAD6/wcAAAARAAMAAAD6/wYAAAARAAMAAAD7/wsAAAALAAoAAAD6/wUAAAALAAoAAAA=")
+tile_map_data = PackedByteArray("AAD1/w0AAAAYABIAAAD1/w4AAAAOABMAAAD2/w0AAAAOABMAAGD1/wwAAAAOABMAADD0/w0AAAAOABMAAFD7/wYAAAAVABMAADD6/wQAAAAYAAkAAAD8/wIAAAAYAAgAAAD7/wIAAAATAAsAAAD6/wMAAAAZAAkAAAD6/wAAAAAWAAsAAAD//wYAAAAWAAsAAADx/wwAAAAWAAsAAAD3/wgAAAAWAAsAAAD4/w8AAAAWAAsAAADx/xIAAAAWAAsAAADu/w8AAAAWAAsAAAD4/xMAAAAWAAsAAADq/xIAAAAWAAsAAADs/wgAAAATAAYAAADr/wgAAAASAAYAAADr/wkAAAASAAcAAADs/wkAAAATAAcAAADp/woAAAAUAAcAAADr/wsAAAAUAAcAAADp/wgAAAAXAAcAAADo/wgAAAAXAAcAAADo/wkAAAAXAAcAAADs/woAAAAXAAcAAADq/wkAAAAZAAQAAADp/wsAAAAZAAQAAADo/wsAAAAWAAgAAADq/wgAAAAWAAgAAADq/woAAAAUAAYAAADs/wsAAAAZAAQAAADq/wsAAAAXAAgAAADp/wkAAAAXAAgAAADr/woAAAAXAAcAAADo/woAAAAXAAcAAADp//L/AAATABMAAGDp//P/AAASABMAAGDk//X/AAAVAAUAAADj//b/AAAUAAUAAADj//X/AAAVAAkAAADl//b/AAAWAAsAAADk//T/AAAZAAcAAADn//b/AAAYAA8AAADo//b/AAAYAA8AAADp//b/AAAYAA8AAADn//X/AAAPABMAADDo//X/AAAPABMAADDp//X/AAAPABMAADDn//P/AAAPABEAAFDn//L/AAAOABEAAFDn//T/AAAQABEAAFDk//L/AAAXAAMAADDl//L/AAAXAAMAADDm//L/AAAXAAMAADDk//P/AAAXAAIAAADl//P/AAAXAAIAAADm//P/AAAXAAIAAAA=")
 tile_set = SubResource("TileSet_lmocr")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="NavigationRegion2D"]
-position = Vector2(-1, 109)
-script = ExtResource("1_dyfk0")
-
-[node name="MainChar" type="Sprite2D" parent="NavigationRegion2D/CharacterBody2D"]
-scale = Vector2(0.487952, 0.487952)
-texture = ExtResource("2_mtvoh")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/CharacterBody2D"]
-visible = false
-scale = Vector2(0.48, 0.48)
-shape = SubResource("CircleShape2D_mbsvm")
-
-[node name="Camera2D" type="Camera2D" parent="NavigationRegion2D/CharacterBody2D"]
+[node name="CharacterBody2D" parent="NavigationRegion2D" instance=ExtResource("2_co45l")]
 
 [node name="Enemy" parent="NavigationRegion2D" node_paths=PackedStringArray("target") instance=ExtResource("4_ca23p")]
-position = Vector2(-6, 5)
-scale = Vector2(0.784096, -0.88108)
-target = NodePath("../CharacterBody2D")
+target = NodePath("")
 
 [node name="Enemy2" parent="NavigationRegion2D" node_paths=PackedStringArray("target") instance=ExtResource("4_ca23p")]
 position = Vector2(-906, 601)
-target = NodePath("../CharacterBody2D")
+target = NodePath("")
 
 [node name="Enemy3" parent="NavigationRegion2D" node_paths=PackedStringArray("target") instance=ExtResource("4_ca23p")]
 position = Vector2(-681, 660)
-target = NodePath("../CharacterBody2D")
+target = NodePath("")
 
 [node name="Enemy4" parent="NavigationRegion2D" node_paths=PackedStringArray("target") instance=ExtResource("4_ca23p")]
 position = Vector2(-574, 69)
-target = NodePath("../CharacterBody2D")
+target = NodePath("")
 
 [node name="Enemy5" parent="NavigationRegion2D" node_paths=PackedStringArray("target") instance=ExtResource("4_ca23p")]
 position = Vector2(8, 618)
-target = NodePath("../CharacterBody2D")
+target = NodePath("")
 
 [node name="Enemy6" parent="NavigationRegion2D" node_paths=PackedStringArray("target") instance=ExtResource("4_ca23p")]
 position = Vector2(-880, 991)
-target = NodePath("../CharacterBody2D")
+target = NodePath("")
 
 [node name="Enemy7" parent="NavigationRegion2D" node_paths=PackedStringArray("target") instance=ExtResource("4_ca23p")]
 position = Vector2(-1054, 52)
-target = NodePath("../CharacterBody2D")
+target = NodePath("")
 
 [node name="Enemy8" parent="NavigationRegion2D" node_paths=PackedStringArray("target") instance=ExtResource("4_ca23p")]
 position = Vector2(-982, -248)
-target = NodePath("../CharacterBody2D")
+target = NodePath("")
 
 [node name="Enemy9" parent="NavigationRegion2D" node_paths=PackedStringArray("target") instance=ExtResource("4_ca23p")]
 position = Vector2(-441, -353)
-target = NodePath("../CharacterBody2D")
+target = NodePath("")
 
 [node name="PostelKrvava" type="Sprite2D" parent="NavigationRegion2D"]
 position = Vector2(-304, 106)
