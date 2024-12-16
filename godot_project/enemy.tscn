@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bo0r70ejqfu7x"]
+[gd_scene load_steps=12 format=3 uid="uid://bo0r70ejqfu7x"]
 
 [ext_resource type="Script" path="res://enemy.gd" id="1_eoa08"]
 [ext_resource type="Texture2D" uid="uid://i3d4hsm3djba" path="res://obrazky/doge/doge1.png" id="2_deql3"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bwf16yrqwic7" path="res://obrazky/doge/doge4.png" id="5_w3jat"]
 [ext_resource type="Texture2D" uid="uid://dkybdtjulrdx7" path="res://obrazky/doge/doge5.png" id="6_adtav"]
 [ext_resource type="Texture2D" uid="uid://85kxf2h3iy6y" path="res://obrazky/doge/doge6.png" id="7_ji7ay"]
+[ext_resource type="Texture2D" uid="uid://dpfkyipl8yl4a" path="res://utok.png" id="8_ynogb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kl45v"]
 radius = 20.0
@@ -48,6 +49,9 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_e7nqq"]
+radius = 30.0167
+
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_eoa08")
 
@@ -70,4 +74,26 @@ rotation = 1.5708
 scale = Vector2(0.248246, 0.248246)
 sprite_frames = SubResource("SpriteFrames_0mvte")
 autoplay = "default"
-frame_progress = 0.630834
+
+[node name="DmgArea2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DmgArea2D"]
+position = Vector2(43, -1)
+shape = SubResource("CircleShape2D_e7nqq")
+
+[node name="DmgTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="DmgAreaImg" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+position = Vector2(48, -7)
+rotation = 0.601282
+scale = Vector2(0.145638, 0.145638)
+texture = ExtResource("8_ynogb")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_entered" from="DmgArea2D" to="." method="_on_dmg_area_2d_body_entered"]
+[connection signal="body_exited" from="DmgArea2D" to="." method="_on_dmg_area_2d_body_exited"]
+[connection signal="timeout" from="DmgTimer" to="." method="_on_dmg_timer_timeout"]

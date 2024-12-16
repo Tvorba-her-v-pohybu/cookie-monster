@@ -7602,39 +7602,39 @@ tile_set = SubResource("TileSet_lmocr")
 [node name="CharacterBody2D" parent="NavigationRegion2D" instance=ExtResource("2_co45l")]
 
 [node name="Enemy" parent="NavigationRegion2D" node_paths=PackedStringArray("target") instance=ExtResource("4_ca23p")]
-target = NodePath("")
+target = NodePath("../CharacterBody2D")
 
 [node name="Enemy2" parent="NavigationRegion2D" node_paths=PackedStringArray("target") instance=ExtResource("4_ca23p")]
 position = Vector2(-906, 601)
-target = NodePath("")
+target = NodePath("../CharacterBody2D")
 
 [node name="Enemy3" parent="NavigationRegion2D" node_paths=PackedStringArray("target") instance=ExtResource("4_ca23p")]
 position = Vector2(-681, 660)
-target = NodePath("")
+target = NodePath("../CharacterBody2D")
 
 [node name="Enemy4" parent="NavigationRegion2D" node_paths=PackedStringArray("target") instance=ExtResource("4_ca23p")]
 position = Vector2(-574, 69)
-target = NodePath("")
+target = NodePath("../CharacterBody2D")
 
 [node name="Enemy5" parent="NavigationRegion2D" node_paths=PackedStringArray("target") instance=ExtResource("4_ca23p")]
 position = Vector2(8, 618)
-target = NodePath("")
+target = NodePath("../CharacterBody2D")
 
 [node name="Enemy6" parent="NavigationRegion2D" node_paths=PackedStringArray("target") instance=ExtResource("4_ca23p")]
 position = Vector2(-880, 991)
-target = NodePath("")
+target = NodePath("../CharacterBody2D")
 
 [node name="Enemy7" parent="NavigationRegion2D" node_paths=PackedStringArray("target") instance=ExtResource("4_ca23p")]
 position = Vector2(-1054, 52)
-target = NodePath("")
+target = NodePath("../CharacterBody2D")
 
 [node name="Enemy8" parent="NavigationRegion2D" node_paths=PackedStringArray("target") instance=ExtResource("4_ca23p")]
 position = Vector2(-982, -248)
-target = NodePath("")
+target = NodePath("../CharacterBody2D")
 
 [node name="Enemy9" parent="NavigationRegion2D" node_paths=PackedStringArray("target") instance=ExtResource("4_ca23p")]
 position = Vector2(-441, -353)
-target = NodePath("")
+target = NodePath("../CharacterBody2D")
 
 [node name="PostelKrvava" type="Sprite2D" parent="NavigationRegion2D"]
 position = Vector2(-304, 106)
