@@ -1,9 +1,14 @@
 extends CharacterBody2D
 
+var health := 100
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
+
+func process_damage(value: int):
+	$AnimationPlayer.play("dmg")
+	health -= value
 
 func _physics_process(delta: float) -> void:
 
