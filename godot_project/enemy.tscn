@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dpfkyipl8yl4a" path="res://utok.png" id="8_ynogb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kl45v"]
-radius = 20.0
+radius = 13.0384
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0mvte"]
 animations = [{

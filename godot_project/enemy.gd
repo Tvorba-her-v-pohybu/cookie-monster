@@ -4,6 +4,8 @@ extends CharacterBody2D
 @export var SPEED = 90.0
 @export var ACCEL = 8.0
 
+@export var damage = 5
+
 @export var target : Node2D
 
 
@@ -41,7 +43,7 @@ func _on_dmg_timer_timeout() -> void:
 	$AnimatedSprite2D.play()
 	
 	if player != null:
-		player.process_damage(10)
+		player.process_damage(damage)
 		
 
 
