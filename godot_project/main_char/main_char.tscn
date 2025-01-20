@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://i2w6rdpteogq"]
+[gd_scene load_steps=10 format=3 uid="uid://i2w6rdpteogq"]
 
 [ext_resource type="Script" path="res://character_body_2d.gd" id="1_u5pnm"]
 [ext_resource type="Texture2D" uid="uid://ckah71pcxw3l" path="res://main_char.png" id="2_rfbov"]
+[ext_resource type="Texture2D" uid="uid://df36a48twkocx" path="res://obrazky/teeth.png" id="3_v5su5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mbsvm"]
 radius = 19.2354
@@ -20,6 +21,54 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Teeth:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Teeth:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Teeth:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AttackArea:monitoring")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_edmay"]
 resource_name = "dmg"
@@ -36,17 +85,74 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 0.397701, 0.329255, 1), Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_hdgjp"]
+resource_name = "attack"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Teeth:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Teeth:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.466667, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1), Vector2(1, 1), Vector2(1e-05, 1e-05)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Teeth:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.466667, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AttackArea:monitoring")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.166667, 0.566667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_l2alf"]
 _data = {
 "RESET": SubResource("Animation_ec4l3"),
+"attack": SubResource("Animation_hdgjp"),
 "dmg": SubResource("Animation_edmay")
 }
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jhc0m"]
+radius = 24.0208
 
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["player"]]
 position = Vector2(-1, 109)
 script = ExtResource("1_u5pnm")
 
 [node name="MainChar" type="Sprite2D" parent="."]
+rotation = 4.71239
 scale = Vector2(0.487952, 0.487952)
 texture = ExtResource("2_rfbov")
 
@@ -61,3 +167,30 @@ shape = SubResource("CircleShape2D_mbsvm")
 libraries = {
 "": SubResource("AnimationLibrary_l2alf")
 }
+
+[node name="AttackAnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_l2alf")
+}
+
+[node name="Teeth" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(18, -2)
+rotation = 4.71239
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("3_v5su5")
+
+[node name="AttackArea" type="Area2D" parent="."]
+position = Vector2(22, -27)
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(2, 26)
+shape = SubResource("CircleShape2D_jhc0m")
+
+[node name="AttackDelayTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
+
+[connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
