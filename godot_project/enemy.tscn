@@ -53,6 +53,8 @@ animations = [{
 radius = 30.0167
 
 [node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 17
+collision_mask = 9
 script = ExtResource("1_eoa08")
 
 [node name="MainChar" type="Sprite2D" parent="."]

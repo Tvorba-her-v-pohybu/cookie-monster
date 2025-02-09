@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://i2w6rdpteogq"]
+[gd_scene load_steps=12 format=3 uid="uid://i2w6rdpteogq"]
 
 [ext_resource type="Script" path="res://character_body_2d.gd" id="1_u5pnm"]
 [ext_resource type="Texture2D" uid="uid://ckah71pcxw3l" path="res://main_char.png" id="2_rfbov"]
@@ -69,20 +69,17 @@ tracks/4/keys = {
 "update": 1,
 "values": [true]
 }
-
-[sub_resource type="Animation" id="Animation_edmay"]
-resource_name = "dmg"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MainChar:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.1, 0.233333, 0.333333),
-"transitions": PackedFloat32Array(1, 1, 1),
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Camera2D:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 0.397701, 0.329255, 1), Color(1, 1, 1, 1)]
+"values": [Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_hdgjp"]
@@ -137,10 +134,57 @@ tracks/3/keys = {
 "values": [true, false]
 }
 
+[sub_resource type="Animation" id="Animation_edmay"]
+resource_name = "dmg"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainChar:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.233333, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0.397701, 0.329255, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_8uwmm"]
+resource_name = "camera_top_down"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -216)]
+}
+
+[sub_resource type="Animation" id="Animation_wac3a"]
+resource_name = "camera_normal"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.966667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -216), Vector2(0, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_l2alf"]
 _data = {
 "RESET": SubResource("Animation_ec4l3"),
 "attack": SubResource("Animation_hdgjp"),
+"camera_normal": SubResource("Animation_wac3a"),
+"camera_top_down": SubResource("Animation_8uwmm"),
 "dmg": SubResource("Animation_edmay")
 }
 
@@ -149,7 +193,11 @@ radius = 24.0208
 
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["player"]]
 position = Vector2(-1, 109)
+collision_layer = 5
+collision_mask = 3
 script = ExtResource("1_u5pnm")
+input_left = "ui_left"
+input_right = "ui_right"
 
 [node name="MainChar" type="Sprite2D" parent="."]
 rotation = 4.71239
