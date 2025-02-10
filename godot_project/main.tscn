@@ -7692,6 +7692,9 @@ value = 50.0
 
 [node name="BossArea" type="Area2D" parent="."]
 position = Vector2(-176, 1061)
+collision_layer = 0
+collision_mask = 4
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BossArea"]
 position = Vector2(18, 75.5)
