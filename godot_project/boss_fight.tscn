@@ -7,6 +7,8 @@
 [ext_resource type="Script" path="res://canvas_layer.gd" id="7_45gyt"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_o8n0p"]
+vertices = PackedVector2Array(949, 875, -1143, 875, -1143, 863, 949, 863, -1191, 911, -1179, 911, 3617.6, 2025.01, 64.9063, 2901.47, -2269.33, 1870.45, -1227, 911, 3832.44, -678.367, 1097, 655, 1097, 507, -1227, -645, -2760.74, 707.578, -2511.89, -1262.28, 222.57, -2078.44, -1191, -645, 1049, 655, 1061, 507, 1061, 655, 1033, 911, 1049, 507, 1033, 507, 1033, -645, 997, -645, 997, 911, 985, 911, 985, -645, 949, -645, 949, 827, -1143, 827, -1143, -645, 1033, 655, -1179, -645)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7, 8), PackedInt32Array(9, 4, 8), PackedInt32Array(10, 6, 11, 12), PackedInt32Array(13, 9, 8, 14, 15), PackedInt32Array(13, 15, 16, 17), PackedInt32Array(18, 19, 20, 21), PackedInt32Array(19, 18, 22), PackedInt32Array(22, 23, 24), PackedInt32Array(25, 26, 27, 28), PackedInt32Array(29, 30, 31, 32, 16), PackedInt32Array(21, 33, 18), PackedInt32Array(19, 22, 24), PackedInt32Array(12, 19, 24, 10), PackedInt32Array(16, 10, 24, 25), PackedInt32Array(16, 25, 28), PackedInt32Array(16, 28, 29), PackedInt32Array(21, 20, 11, 6), PackedInt32Array(16, 32, 34), PackedInt32Array(17, 16, 34), PackedInt32Array(17, 34, 5, 4), PackedInt32Array(6, 5, 27), PackedInt32Array(6, 27, 26), PackedInt32Array(6, 26, 21)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-2521, -1270, 223, -2089, 3843, -685, 3627, 2033, 64, 2912, -2277, 1878, -2771, 709)])
 parsed_geometry_type = 1
 
@@ -7630,3 +7632,4 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_u184g")
 value = 50.0
 
 [node name="Boss" parent="." instance=ExtResource("5_ivwui")]
+position = Vector2(-99, 683)

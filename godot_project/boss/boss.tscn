@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cnlllfacfd5gu"]
 
-[ext_resource type="Texture2D" uid="uid://1x56334n5jkp" path="res://obrazky/boss.png" id="1_1rlbh"]
 [ext_resource type="Script" path="res://boss/boss.gd" id="1_ta7w1"]
+[ext_resource type="Texture2D" uid="uid://nen0lcr85t6o" path="res://cyborg cat.png" id="2_uhdtb"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yurfy"]
 radius = 122.0
@@ -14,11 +14,23 @@ collision_mask = 9
 script = ExtResource("1_ta7w1")
 
 [node name="Boss2" type="Sprite2D" parent="."]
-texture = ExtResource("1_1rlbh")
+position = Vector2(14, -77)
+scale = Vector2(0.8075, 0.938)
+texture = ExtResource("2_uhdtb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(9, 9)
 shape = SubResource("CapsuleShape2D_yurfy")
 
 [node name="ShootTimer" type="Timer" parent="."]
+wait_time = 0.993
+
+[node name="HealthLbl" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = -13.0
+offset_top = -189.0
+offset_right = 27.0
+offset_bottom = -166.0
+text = "100"
 
 [connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
