@@ -79,6 +79,7 @@ sprite_frames = SubResource("SpriteFrames_0mvte")
 autoplay = "default"
 
 [node name="DmgArea2D" type="Area2D" parent="."]
+collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DmgArea2D"]
 position = Vector2(43, -1)
