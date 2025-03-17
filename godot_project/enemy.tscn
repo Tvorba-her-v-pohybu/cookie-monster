@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bo0r70ejqfu7x"]
+[gd_scene load_steps=13 format=3 uid="uid://bo0r70ejqfu7x"]
 
 [ext_resource type="Script" path="res://enemy.gd" id="1_eoa08"]
 [ext_resource type="Texture2D" uid="uid://i3d4hsm3djba" path="res://obrazky/doge/doge1.png" id="2_deql3"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dkybdtjulrdx7" path="res://obrazky/doge/doge5.png" id="6_adtav"]
 [ext_resource type="Texture2D" uid="uid://85kxf2h3iy6y" path="res://obrazky/doge/doge6.png" id="7_ji7ay"]
 [ext_resource type="Texture2D" uid="uid://dpfkyipl8yl4a" path="res://utok.png" id="8_ynogb"]
+[ext_resource type="AudioStream" uid="uid://b8a6k6ccn0xg3" path="res://zvuky/zraneni1.wav" id="9_cqjqs"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kl45v"]
 radius = 13.0384
@@ -95,7 +96,11 @@ rotation = 0.601282
 scale = Vector2(0.145638, 0.145638)
 texture = ExtResource("8_ynogb")
 
+[node name="DeathAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_cqjqs")
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="DmgArea2D" to="." method="_on_dmg_area_2d_body_entered"]
 [connection signal="body_exited" from="DmgArea2D" to="." method="_on_dmg_area_2d_body_exited"]
 [connection signal="timeout" from="DmgTimer" to="." method="_on_dmg_timer_timeout"]
+[connection signal="finished" from="DeathAudio" to="." method="_on_death_audio_finished"]

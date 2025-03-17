@@ -54,9 +54,10 @@ unique_name_in_owner = true
 position = Vector2(9, 107)
 
 [node name="PointLight2D" type="PointLight2D" parent="NavigationRegion2D/CharacterBody2D"]
-position = Vector2(-1.99998, 2)
+position = Vector2(2, -1)
 rotation = -1.56719
 shadow_enabled = true
+shadow_color = Color(0.470588, 0, 0, 0)
 texture = ExtResource("4_630ot")
 offset = Vector2(50, 180)
 
