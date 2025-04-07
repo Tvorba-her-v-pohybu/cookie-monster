@@ -8026,8 +8026,9 @@ unique_name_in_owner = true
 position = Vector2(9, 107)
 
 [node name="PointLight2D" type="PointLight2D" parent="NavigationRegion2D/CharacterBody2D"]
-position = Vector2(178, -51)
+position = Vector2(176, -51)
 rotation = -1.56719
+energy = 1.61
 texture = ExtResource("4_630ot")
 
 [node name="Enemy" parent="NavigationRegion2D" node_paths=PackedStringArray("target") instance=ExtResource("4_ca23p")]
