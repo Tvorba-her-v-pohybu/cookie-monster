@@ -29,7 +29,8 @@ func _physics_process(delta: float) -> void:
 
 
 func process_damage(value: int):
-	queue_free()
+	$DeathAudio.play()
+	$MainChar.visible = false
 
 func _on_dmg_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
@@ -61,3 +62,7 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 			%DmgAreaImg.visible = false
 		else:
 			$DmgTimer.start()
+
+
+func _on_death_audio_finished() -> void:
+	queue_free()

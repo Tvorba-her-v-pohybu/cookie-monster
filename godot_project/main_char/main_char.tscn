@@ -1,8 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://i2w6rdpteogq"]
+[gd_scene load_steps=14 format=3 uid="uid://i2w6rdpteogq"]
 
 [ext_resource type="Script" path="res://character_body_2d.gd" id="1_u5pnm"]
-[ext_resource type="Texture2D" uid="uid://ckah71pcxw3l" path="res://main_char.png" id="2_rfbov"]
+[ext_resource type="Texture2D" uid="uid://vronjbbba7ur" path="res://main_char2.png" id="2_uac8m"]
 [ext_resource type="Texture2D" uid="uid://df36a48twkocx" path="res://obrazky/teeth.png" id="3_v5su5"]
+[ext_resource type="AudioStream" uid="uid://dn3rthe17mj71" path="res://zvuky/taptap.wav" id="4_ofaxa"]
+[ext_resource type="AudioStream" uid="uid://cej6vjn0ok30" path="res://zvuky/pju.wav" id="5_i2hrw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mbsvm"]
 radius = 19.2354
@@ -134,19 +136,19 @@ tracks/3/keys = {
 "values": [true, false]
 }
 
-[sub_resource type="Animation" id="Animation_edmay"]
-resource_name = "dmg"
+[sub_resource type="Animation" id="Animation_wac3a"]
+resource_name = "camera_normal"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MainChar:modulate")
+tracks/0/path = NodePath("Camera2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.1, 0.233333, 0.333333),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.966667),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 0.397701, 0.329255, 1), Color(1, 1, 1, 1)]
+"values": [Vector2(0, -216), Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_8uwmm"]
@@ -164,19 +166,19 @@ tracks/0/keys = {
 "values": [Vector2(0, 0), Vector2(0, -216)]
 }
 
-[sub_resource type="Animation" id="Animation_wac3a"]
-resource_name = "camera_normal"
+[sub_resource type="Animation" id="Animation_edmay"]
+resource_name = "dmg"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Camera2D:position")
+tracks/0/path = NodePath("MainChar:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.966667),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0.1, 0.233333, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(0, -216), Vector2(0, 0)]
+"values": [Color(1, 1, 1, 1), Color(1, 0.397701, 0.329255, 1), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_l2alf"]
@@ -200,9 +202,10 @@ input_left = "ui_left"
 input_right = "ui_right"
 
 [node name="MainChar" type="Sprite2D" parent="."]
-rotation = 4.71239
-scale = Vector2(0.487952, 0.487952)
-texture = ExtResource("2_rfbov")
+position = Vector2(23, 3.99998)
+rotation = 7.85397
+scale = Vector2(0.0890132, 0.0890132)
+texture = ExtResource("2_uac8m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -240,5 +243,13 @@ shape = SubResource("CircleShape2D_jhc0m")
 [node name="AttackDelayTimer" type="Timer" parent="."]
 unique_name_in_owner = true
 one_shot = true
+
+[node name="TapTapAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_ofaxa")
+volume_db = -3.976
+
+[node name="ShotAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_i2hrw")
+volume_db = -0.918
 
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]

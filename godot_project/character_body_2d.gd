@@ -29,6 +29,7 @@ func shoot():
 	projectile.rotation = rotation
 	get_parent().add_child(projectile)
 	projectile.global_position = global_position
+	$ShotAudio.play()
 		
 func start_attack():
 	if %AttackDelayTimer.is_stopped():
@@ -51,6 +52,9 @@ func _physics_process(delta: float) -> void:
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("ui_left", "ui_right")
 	var direction_up := Input.get_axis("ui_up", "ui_down")
+	
+	if (direction != 0.0 or direction_up != 0.0) and not $TapTapAudio.playing:
+		$TapTapAudio.play()
 	
 	look_at(global_position + Vector2(direction, direction_up))
 
