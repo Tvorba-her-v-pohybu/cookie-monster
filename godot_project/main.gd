@@ -14,3 +14,13 @@ func _process(delta: float) -> void:
 func _on_boss_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		body.top_down = true
+
+
+func _on_propast_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		$NavigationRegion2D/propast/Dira.visible = true
+		$NavigationRegion2D/propast/AnimationPlayer.play("propast")
+
+
+func start_bossfight():
+	get_tree().change_scene_to_file("res://boss_fight.tscn")
