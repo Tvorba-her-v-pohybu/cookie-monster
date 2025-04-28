@@ -7632,4 +7632,5 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_u184g")
 value = 50.0
 
 [node name="Boss" parent="." instance=ExtResource("5_ivwui")]
-position = Vector2(414, 668)
+position = Vector2(601, 548)
+scale = Vector2(2.02262, 1.74011)

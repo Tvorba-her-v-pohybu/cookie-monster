@@ -14,12 +14,26 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_shoot_timer_timeout() -> void:
-	var dudl = load("res://boss/dudl.tscn").instantiate()
-	dudl.speed = krecek
-	add_child(dudl)
-	dudl.position = Vector2(-116, 137)
+	var rand = randi_range(0, 2)
+	
+	if rand == 0:
+		var dudl = load("res://boss/dudl.tscn").instantiate()
+		dudl.speed = krecek
+		add_child(dudl)
+		dudl.position = Vector2(-116, 141)
+	
+	if rand == 1:
+		var dudl2 = load("res://boss/dudl.tscn").instantiate()
+		dudl2.speed = krecek
+		add_child(dudl2)
+		dudl2.position = Vector2(-116, 42)
 
-
+	if rand == 2:
+		var dudl3 = load("res://boss/dudl.tscn").instantiate()
+		dudl3.speed = krecek
+		add_child(dudl3)
+		dudl3.position = Vector2(-116, -54)
+	
 func process_damage(value: int):
 	blbec = blbec - value
 	%HealthLbl.text = str(blbec)
