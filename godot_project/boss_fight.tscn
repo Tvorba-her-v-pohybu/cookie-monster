@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=4 uid="uid://bs6n4bkfvndp5"]
+[gd_scene load_steps=17 format=4 uid="uid://bs6n4bkfvndp5"]
 
 [ext_resource type="Script" path="res://boss_fight.gd" id="1_7m0tu"]
 [ext_resource type="Texture2D" uid="uid://dnjb8p3e4rnuh" path="res://enviroment/Tilesheet/tilesheet_complete.png" id="2_l4yuk"]
 [ext_resource type="PackedScene" uid="uid://i2w6rdpteogq" path="res://main_char/main_char.tscn" id="3_nfjux"]
 [ext_resource type="PackedScene" uid="uid://cnlllfacfd5gu" path="res://boss/boss.tscn" id="5_ivwui"]
+[ext_resource type="Texture2D" uid="uid://brqtd4f1e7bex" path="res://obrazky/dira.png" id="6_ks3ra"]
 [ext_resource type="Script" path="res://canvas_layer.gd" id="7_45gyt"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_o8n0p"]
@@ -7589,6 +7590,47 @@ bg_color = Color(0, 0, 0, 0.203922)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u184g"]
 bg_color = Color(0.318479, 0.703791, 0.165333, 1)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c0oy0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7jlg5"]
+size = Vector2(109, 98.5)
+
+[sub_resource type="Animation" id="Animation_r02h8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%CharacterBody2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(766, 780)]
+}
+
+[sub_resource type="Animation" id="Animation_tx3c1"]
+resource_name = "propast"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%CharacterBody2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.566667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(766, 780), Vector2(764, 1108)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yd5au"]
+_data = {
+"RESET": SubResource("Animation_r02h8"),
+"propast": SubResource("Animation_tx3c1")
+}
+
 [node name="BossFight" type="Node2D"]
 position = Vector2(-10, -2)
 script = ExtResource("1_7m0tu")
@@ -7603,7 +7645,8 @@ tile_set = SubResource("TileSet_lmocr")
 
 [node name="CharacterBody2D" parent="NavigationRegion2D" instance=ExtResource("3_nfjux")]
 unique_name_in_owner = true
-position = Vector2(-564, 766)
+position = Vector2(766, 780)
+scale = Vector2(0.935994, 1.32845)
 max_jump_amount = 2
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -7632,5 +7675,35 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_u184g")
 value = 50.0
 
 [node name="Boss" parent="." instance=ExtResource("5_ivwui")]
+<<<<<<< Updated upstream
 position = Vector2(601, 548)
 scale = Vector2(2.02262, 1.74011)
+=======
+position = Vector2(414, 668)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_c0oy0")
+
+[node name="propast" type="Area2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(725, 706)
+collision_layer = 5
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="propast"]
+position = Vector2(52, 55.75)
+shape = SubResource("RectangleShape2D_7jlg5")
+
+[node name="Dira" type="Sprite2D" parent="propast"]
+visible = false
+position = Vector2(55, 65)
+scale = Vector2(2.0566, 1.87719)
+texture = ExtResource("6_ks3ra")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="propast"]
+libraries = {
+"": SubResource("AnimationLibrary_yd5au")
+}
+
+[connection signal="body_entered" from="propast" to="." method="_on_propast_body_entered"]
+>>>>>>> Stashed changes
