@@ -1,0 +1,83 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxpxobh8gcni5"]
+
+[ext_resource type="Script" path="res://menu/menu.gd" id="1_t41a6"]
+[ext_resource type="Script" path="res://menu/label.gd" id="2_klhbd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lunje"]
+bg_color = Color(0.266266, 0.628202, 0.528158, 1)
+border_width_left = 7
+border_width_top = 6
+border_width_right = 7
+border_width_bottom = 6
+border_color = Color(0, 0, 0, 1)
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -3.0
+offset_right = -1.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_t41a6")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -215.0
+offset_top = -134.0
+offset_right = 215.0
+offset_bottom = 134.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 42
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 69
+theme_override_styles/normal = SubResource("StyleBoxFlat_lunje")
+text = "hrát"
+
+[node name="Button3" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "nastavení"
+
+[node name="Button2" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "Ukočit"
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 540.0
+offset_top = 207.0
+offset_right = 580.0
+offset_bottom = 247.0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 429.0
+offset_top = 205.0
+offset_right = 469.0
+offset_bottom = 245.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.035
+anchor_bottom = 0.035
+offset_left = 426.0
+offset_top = 210.0
+offset_right = 425.68
+offset_bottom = 210.32
+script = ExtResource("2_klhbd")
+
+[connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_button_2_pressed"]
