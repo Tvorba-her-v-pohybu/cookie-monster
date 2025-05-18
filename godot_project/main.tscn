@@ -474,7 +474,7 @@ offset_bottom = 575.0
 text = "3"
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.894922, 0.894922, 0.894922, 1)
+color = Color(0, 0, 0, 1)
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="CanvasModulate"]
 position = Vector2(-440, -10)
