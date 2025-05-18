@@ -7679,6 +7679,22 @@ position = Vector2(-103, 297)
 zoom = Vector2(0.5, 0.5)
 
 [node name="Skala" parent="." instance=ExtResource("7_iy1oy")]
+position = Vector2(-245, 760)
+
+[node name="Skala2" parent="." instance=ExtResource("7_iy1oy")]
+position = Vector2(-331, 420)
+
+[node name="Skala4" parent="." instance=ExtResource("7_iy1oy")]
+position = Vector2(-791, 759)
+
+[node name="Skala5" parent="." instance=ExtResource("7_iy1oy")]
+position = Vector2(-555, 622)
+
+[node name="Skala6" parent="." instance=ExtResource("7_iy1oy")]
+position = Vector2(-821, 398)
+
+[node name="Skala3" parent="." instance=ExtResource("7_iy1oy")]
+position = Vector2(-57, 585)
 
 [node name="KoupilJsemTo" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true

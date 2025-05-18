@@ -16,8 +16,8 @@ script = ExtResource("1_n86vk")
 shape = SubResource("CircleShape2D_63hm5")
 
 [node name="AmmoImg" type="Sprite2D" parent="."]
-position = Vector2(11, -3)
-scale = Vector2(0.0449826, 0.0559596)
+position = Vector2(2, -2)
+scale = Vector2(0.0273589, 0.0348232)
 texture = ExtResource("2_a8in1")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
