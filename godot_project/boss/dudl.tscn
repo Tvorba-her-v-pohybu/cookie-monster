@@ -1,13 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://b60d06p2j80vi"]
+[gd_scene load_steps=9 format=3 uid="uid://b60d06p2j80vi"]
 
 [ext_resource type="Script" path="res://boss/dudl.gd" id="1_nept4"]
 [ext_resource type="Texture2D" uid="uid://cbj2emjtmkdg" path="res://oiiai.png" id="2_mfgih"]
+[ext_resource type="Texture2D" uid="uid://d2ernrrumpgjt" path="res://boss/raketa.png" id="3_w3hjh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h27i6"]
 radius = 25.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_il2pd"]
-radius = 27.0185
+radius = 27.0
 
 [sub_resource type="Animation" id="Animation_yyopo"]
 length = 0.001
@@ -55,6 +56,7 @@ lock_rotation = true
 script = ExtResource("1_nept4")
 
 [node name="Dudl2" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(0.893812, 0.973173)
 rotation = -1.5708
 scale = Vector2(0.254122, 0.28449)
@@ -69,6 +71,7 @@ collision_mask = 4
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea"]
+position = Vector2(3, 0)
 shape = SubResource("CircleShape2D_il2pd")
 
 [node name="LiveTimer" type="Timer" parent="."]
@@ -81,6 +84,11 @@ libraries = {
 "": SubResource("AnimationLibrary_vtfpf")
 }
 autoplay = "oiiai"
+
+[node name="Raketa" type="Sprite2D" parent="."]
+position = Vector2(-3, 131)
+scale = Vector2(0.395752, 0.395752)
+texture = ExtResource("3_w3hjh")
 
 [connection signal="body_entered" from="CollisionArea" to="." method="_on_collision_area_body_entered"]
 [connection signal="timeout" from="LiveTimer" to="." method="_on_live_timer_timeout"]

@@ -15,6 +15,9 @@ var top_down := false :
 	#		$AnimationPlayer.play("camera_normal")
 
 
+func disable_camera():
+	$Camera2D.enabled = false
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("attack"):
 		rotation = 0

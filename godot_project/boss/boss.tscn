@@ -1,12 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://cnlllfacfd5gu"]
+[gd_scene load_steps=6 format=3 uid="uid://cnlllfacfd5gu"]
 
 [ext_resource type="Script" path="res://boss/boss.gd" id="1_ta7w1"]
 [ext_resource type="Texture2D" uid="uid://nen0lcr85t6o" path="res://cyborg cat.png" id="2_uhdtb"]
-[ext_resource type="PackedScene" uid="uid://b60d06p2j80vi" path="res://boss/dudl.tscn" id="3_stdm4"]
+[ext_resource type="Texture2D" uid="uid://cjioecupk7gfs" path="res://boss/boss2.png" id="4_rwroj"]
+[ext_resource type="Texture2D" uid="uid://2m84mswqn6b6" path="res://boss/ruka.png" id="5_gyfa2"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yurfy"]
-radius = 122.0
-height = 324.0
+radius = 98.0
+height = 370.0
 
 [node name="Boss" type="CharacterBody2D" groups=["enemy"]]
 position = Vector2(-73, 678)
@@ -15,26 +16,41 @@ collision_mask = 9
 script = ExtResource("1_ta7w1")
 
 [node name="Boss2" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(14, -77)
 scale = Vector2(0.8075, 0.938)
 texture = ExtResource("2_uhdtb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(9, 9)
+position = Vector2(9, -39)
 shape = SubResource("CapsuleShape2D_yurfy")
 
 [node name="ShootTimer" type="Timer" parent="."]
-wait_time = 0.993
+autostart = true
 
 [node name="HealthLbl" type="Label" parent="."]
 unique_name_in_owner = true
-offset_left = -13.0
-offset_top = -189.0
-offset_right = 27.0
-offset_bottom = -166.0
+offset_left = 6.0
+offset_top = -256.0
+offset_right = 46.0
+offset_bottom = -233.0
 text = "100"
 
-[node name="Dudl" parent="." instance=ExtResource("3_stdm4")]
-position = Vector2(-146, -54)
+[node name="Boss3" type="Sprite2D" parent="."]
+position = Vector2(-137, -41)
+scale = Vector2(0.276001, 0.276001)
+texture = ExtResource("4_rwroj")
+
+[node name="Ruka" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(38, -22)
+rotation = -0.0163764
+scale = Vector2(0.261485, 0.261485)
+texture = ExtResource("5_gyfa2")
+offset = Vector2(-130, -250)
+
+[node name="ProjectilePos" type="Node2D" parent="Ruka"]
+unique_name_in_owner = true
+position = Vector2(-478.321, -386.853)
 
 [connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

@@ -1,8 +1,11 @@
 extends CharacterBody2D
 
 @export var krecek := 500
-
 @export var blbec := 500
+
+@export var player := Node2D
+@export var player_offset := Vector2.ZERO
+
 func _ready() -> void:
 	$ShootTimer.start()
 	%HealthLbl.text = str(blbec)
@@ -10,29 +13,19 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	pass
 
-
+func _process(delta: float) -> void:
+	if player:
+		%Ruka.look_at(player.global_position + player_offset)
+		%Ruka.rotate(PI)
 
 
 func _on_shoot_timer_timeout() -> void:
-	var rand = randi_range(0, 2)
+	var dudl = load("res://boss/dudl.tscn").instantiate()
+	dudl.speed = krecek
+	add_child(dudl)
+	dudl.global_position = %ProjectilePos.global_position
+	dudl.rotation = %ProjectilePos.global_rotation
 	
-	if rand == 0:
-		var dudl = load("res://boss/dudl.tscn").instantiate()
-		dudl.speed = krecek
-		add_child(dudl)
-		dudl.position = Vector2(-116, 141)
-	
-	if rand == 1:
-		var dudl2 = load("res://boss/dudl.tscn").instantiate()
-		dudl2.speed = krecek
-		add_child(dudl2)
-		dudl2.position = Vector2(-116, 42)
-
-	if rand == 2:
-		var dudl3 = load("res://boss/dudl.tscn").instantiate()
-		dudl3.speed = krecek
-		add_child(dudl3)
-		dudl3.position = Vector2(-116, -54)
 	
 func process_damage(value: int):
 	blbec = blbec - value

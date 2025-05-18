@@ -2,11 +2,12 @@ extends RigidBody2D
 
 
 var speed := 500
+var first := true
+var shot_dir := 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	apply_central_impulse(Vector2(-speed, 0))
-
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -14,7 +15,12 @@ func _process(delta: float) -> void:
 
 
 func _physics_process(delta: float) -> void:
-	apply_central_force(Vector2(-speed, 0))
+	if first:
+		first = false
+		shot_dir = rotation
+		apply_central_impulse(Vector2(-speed, 0).rotated(shot_dir))
+		
+	apply_central_force(Vector2(-speed, 0).rotated(shot_dir))
 	#if linear_velocity.length() < 1:
 	#	queue_free()
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://bs6n4bkfvndp5"]
+[gd_scene load_steps=14 format=4 uid="uid://bs6n4bkfvndp5"]
 
 [ext_resource type="Script" path="res://boss_fight.gd" id="1_7m0tu"]
 [ext_resource type="Texture2D" uid="uid://dnjb8p3e4rnuh" path="res://enviroment/Tilesheet/tilesheet_complete.png" id="2_l4yuk"]
@@ -6,7 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://i2w6rdpteogq" path="res://main_char/main_char.tscn" id="3_nfjux"]
 [ext_resource type="PackedScene" uid="uid://cnlllfacfd5gu" path="res://boss/boss.tscn" id="5_ivwui"]
 [ext_resource type="Script" path="res://canvas_layer.gd" id="7_45gyt"]
-[ext_resource type="Texture2D" uid="uid://dljg7qlownlec" path="res://boss/skala.png" id="7_gslw5"]
+[ext_resource type="PackedScene" uid="uid://h5fjibotcewn" path="res://boss/skala.tscn" id="7_iy1oy"]
+[ext_resource type="AudioStream" uid="uid://ba5u04vrtdsnc" path="res://zvuky/ja_to_koupil.wav" id="8_kc8i0"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_o8n0p"]
 vertices = PackedVector2Array(949, 875, -1143, 875, -1143, 863, 949, 863, -1191, 911, -1179, 911, 3617.6, 2025.01, 64.9063, 2901.47, -2269.33, 1870.45, -1227, 911, 3832.44, -678.367, 1097, 655, 1097, 507, -1227, -645, -2760.74, 707.578, -2511.89, -1262.28, 222.57, -2078.44, -1191, -645, 1049, 655, 1061, 507, 1061, 655, 1033, 911, 1049, 507, 1033, 507, 1033, -645, 997, -645, 997, 911, 985, 911, 985, -645, 949, -645, 949, 827, -1143, 827, -1143, -645, 1033, 655, -1179, -645)
@@ -7667,22 +7668,20 @@ offset_bottom = 147.5
 theme_override_font_sizes/font_size = 40
 text = "RESTART"
 
-[node name="Boss" parent="." instance=ExtResource("5_ivwui")]
+[node name="Boss" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_ivwui")]
 position = Vector2(601, 548)
 scale = Vector2(2.02262, 1.74011)
+player = NodePath("../NavigationRegion2D/CharacterBody2D")
+player_offset = Vector2(230, 120)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-103, 297)
 zoom = Vector2(0.5, 0.5)
 
-[node name="Skala" type="StaticBody2D" parent="."]
-position = Vector2(-302, 760)
-scale = Vector2(1, 0.6)
+[node name="Skala" parent="." instance=ExtResource("7_iy1oy")]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Skala"]
-polygon = PackedVector2Array(131, -4, 114, -1, 34, 18, -51, 28, -119, 17, -143, -4, -172, -49, -117, -77, -44, -100, 14, -92, 49, -97, 99, -91, 139, -58, 149, -33, 149, -11)
-one_way_collision = true
+[node name="KoupilJsemTo" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("8_kc8i0")
 
-[node name="Skala" type="Sprite2D" parent="Skala"]
-scale = Vector2(0.262634, 0.260437)
-texture = ExtResource("7_gslw5")
+[connection signal="pressed" from="CanvasLayer/smrtLbl/RestartButton" to="." method="_on_restart_button_pressed"]
