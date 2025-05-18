@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cnrnrbeuvhc33"]
+[gd_scene load_steps=6 format=3 uid="uid://cnrnrbeuvhc33"]
 
 [ext_resource type="Script" path="res://main_char/player_projectile.gd" id="1_xskbr"]
 [ext_resource type="Texture2D" uid="uid://b56xqot7j43nb" path="res://obrazky/projectile.png" id="2_eu72e"]
+[ext_resource type="Texture2D" uid="uid://tiui7milu27q" path="res://obrazky/projectile_gun.png" id="3_vpfoa"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h27i6"]
 radius = 6.0
@@ -16,6 +17,7 @@ lock_rotation = true
 script = ExtResource("1_xskbr")
 
 [node name="Projectile" type="Sprite2D" parent="."]
+visible = false
 scale = Vector2(0.109375, 0.109375)
 texture = ExtResource("2_eu72e")
 
@@ -34,6 +36,12 @@ shape = SubResource("CircleShape2D_il2pd")
 wait_time = 3.0
 one_shot = true
 autostart = true
+
+[node name="ProjectileGun" type="Sprite2D" parent="."]
+position = Vector2(2, 0)
+rotation = 1.57079
+scale = Vector2(0.0359008, 0.0359008)
+texture = ExtResource("3_vpfoa")
 
 [connection signal="body_entered" from="CollisionArea" to="." method="_on_collision_area_body_entered"]
 [connection signal="timeout" from="LiveTimer" to="." method="_on_live_timer_timeout"]

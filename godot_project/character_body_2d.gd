@@ -1,15 +1,22 @@
 extends PlatformerController2D
 
 var health := 100
+var ammo := 3
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
+
 
 var top_down := false :
 	set(value):
 		top_down = value
 		if value:
 			rotation = 0
+			$MainChar.visible = false
+			$AnimatedSprite2D.visible = true
+		else:
+			$MainChar.visible = true
+			$AnimatedSprite2D.visible = false
 		#	$AnimationPlayer.play("camera_top_down")
 		#else:
 	#		$AnimationPlayer.play("camera_normal")
@@ -28,11 +35,13 @@ func _input(event: InputEvent) -> void:
 		super._input(event)
 	
 func shoot():
-	var projectile = load("res://main_char/player_projectile.tscn").instantiate()
-	projectile.rotation = rotation
-	get_parent().add_child(projectile)
-	projectile.global_position = global_position
-	$ShotAudio.play()
+	if ammo > 0 or top_down:
+		var projectile = load("res://main_char/player_projectile.tscn").instantiate()
+		projectile.rotation = rotation
+		get_parent().add_child(projectile)
+		projectile.global_position = global_position
+		$ShotAudio.play()
+		ammo = ammo - 1
 		
 func start_attack():
 	if %AttackDelayTimer.is_stopped():

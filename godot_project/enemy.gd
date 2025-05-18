@@ -11,10 +11,24 @@ extends CharacterBody2D
 
 @onready var navigation : NavigationAgent2D = $NavigationAgent2D
 
+var following := false
+
+
 var player = null
 
+func _ready() -> void:
+	var rand = randi_range(0, 1)
+	$Zombie.visible = rand == 1
+	$Zombie2.visible = rand != 1
+		
+
 func _physics_process(delta: float) -> void:
-	if player == null and $DmgTimer.is_stopped():
+	if not following and target:
+		var dist = global_position.distance_to(target.global_position)
+		if dist < 500:
+			following = true
+	
+	if player == null and $DmgTimer.is_stopped() and following:
 		navigation.target_position = target.global_position
 
 		var next_pos = navigation.get_next_path_position()
@@ -30,7 +44,9 @@ func _physics_process(delta: float) -> void:
 
 func process_damage(value: int):
 	$DeathAudio.play()
-	$MainChar.visible = false
+	visible = false
+	collision_layer = 0
+	collision_mask = 0
 
 func _on_dmg_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):

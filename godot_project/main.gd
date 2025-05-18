@@ -8,8 +8,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
-
+	%AmmoLbl.text = str(%CharacterBody2D.ammo)
 
 func _on_boss_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):

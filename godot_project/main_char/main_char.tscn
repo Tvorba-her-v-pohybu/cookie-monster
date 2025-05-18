@@ -1,10 +1,16 @@
-[gd_scene load_steps=14 format=3 uid="uid://i2w6rdpteogq"]
+[gd_scene load_steps=21 format=3 uid="uid://i2w6rdpteogq"]
 
 [ext_resource type="Script" path="res://character_body_2d.gd" id="1_u5pnm"]
 [ext_resource type="Texture2D" uid="uid://vronjbbba7ur" path="res://main_char2.png" id="2_uac8m"]
 [ext_resource type="Texture2D" uid="uid://df36a48twkocx" path="res://obrazky/teeth.png" id="3_v5su5"]
 [ext_resource type="AudioStream" uid="uid://dn3rthe17mj71" path="res://zvuky/taptap.wav" id="4_ofaxa"]
 [ext_resource type="AudioStream" uid="uid://cej6vjn0ok30" path="res://zvuky/pju.wav" id="5_i2hrw"]
+[ext_resource type="Texture2D" uid="uid://tog0q01qjnr8" path="res://main_char/anim/Untitled_Artwork-1 4.png" id="6_j63u8"]
+[ext_resource type="Texture2D" uid="uid://dk7ydhadnu3d3" path="res://main_char/anim/Untitled_Artwork-2 4.png" id="7_glmnx"]
+[ext_resource type="Texture2D" uid="uid://hux8n74vwe0m" path="res://main_char/anim/Untitled_Artwork-3 4.png" id="8_1fcor"]
+[ext_resource type="Texture2D" uid="uid://f2yw8om40oa0" path="res://main_char/anim/Untitled_Artwork-4 4.png" id="9_mduat"]
+[ext_resource type="Texture2D" uid="uid://bu83s2dm7m4bg" path="res://main_char/anim/Untitled_Artwork-5 4.png" id="10_oc1cq"]
+[ext_resource type="Texture2D" uid="uid://dfnxfere2vca0" path="res://main_char/anim/Untitled_Artwork-6 4.png" id="11_c43wm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mbsvm"]
 radius = 19.2354
@@ -193,6 +199,32 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_jhc0m"]
 radius = 30.0666
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_2dq5n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_j63u8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_glmnx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_1fcor")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_mduat")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_oc1cq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_c43wm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["player"]]
 position = Vector2(-1, 109)
 collision_layer = 4
@@ -251,5 +283,14 @@ volume_db = -3.976
 [node name="ShotAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_i2hrw")
 volume_db = -0.918
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(37, -27)
+scale = Vector2(0.0814209, 0.0814209)
+sprite_frames = SubResource("SpriteFrames_2dq5n")
+autoplay = "default"
+frame = 1
+frame_progress = 0.184006
 
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
