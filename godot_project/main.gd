@@ -24,3 +24,7 @@ func _on_propast_body_entered(body: Node2D) -> void:
 
 func start_bossfight():
 	get_tree().change_scene_to_file("res://boss_fight.tscn")
+
+
+func _on_restart_button_pressed() -> void:
+	get_tree().reload_current_scene()

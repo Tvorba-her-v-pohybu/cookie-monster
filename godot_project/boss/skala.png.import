@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bf8a3b25jfkpt"
-path="res://.godot/imported/hitman1_reload.png-80c89d6a8559968e04ed5ce37c89deff.ctex"
+uid="uid://dljg7qlownlec"
+path="res://.godot/imported/skala.png-49dc55763bc98f0e7d4a5fed139c51fe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://enviroment/PNG/Hitman 1/hitman1_reload.png"
-dest_files=["res://.godot/imported/hitman1_reload.png-80c89d6a8559968e04ed5ce37c89deff.ctex"]
+source_file="res://boss/skala.png"
+dest_files=["res://.godot/imported/skala.png-49dc55763bc98f0e7d4a5fed139c51fe.ctex"]
 
 [params]
 
