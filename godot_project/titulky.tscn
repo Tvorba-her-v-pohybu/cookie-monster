@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://cqp3f2qssf5sf"]
+
+[node name="Node2D" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 441.0
+offset_top = 157.0
+offset_right = -352.0
+offset_bottom = -133.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "velitel Jakub doucek
+
+vrchni programator Jakub doucek
+vedlejší programator Mikulaš doucek
+
+dabing Bořek holenda
+
+grafik Mikulas doucek
+
+vrchní lenoch Bořek holenda
+"
