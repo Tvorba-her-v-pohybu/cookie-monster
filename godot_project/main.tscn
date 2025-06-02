@@ -1,10 +1,11 @@
-[gd_scene load_steps=20 format=4 uid="uid://duc2ch0tq0b2k"]
+[gd_scene load_steps=21 format=4 uid="uid://duc2ch0tq0b2k"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_bnc2o"]
 [ext_resource type="PackedScene" uid="uid://i2w6rdpteogq" path="res://main_char/main_char.tscn" id="2_co45l"]
 [ext_resource type="TileSet" uid="uid://ouoqkkiibq3r" path="res://tileset.tres" id="2_oa183"]
 [ext_resource type="Texture2D" uid="uid://7j8a3m8nvp2n" path="res://obrazky/spotlight.png" id="4_630ot"]
 [ext_resource type="PackedScene" uid="uid://bo0r70ejqfu7x" path="res://enemy.tscn" id="4_ca23p"]
+[ext_resource type="AudioStream" uid="uid://br0vub0uhpuuo" path="res://zvuky/creepy-whispering-6690.mp3" id="4_ilqag"]
 [ext_resource type="Texture2D" uid="uid://cuf46acom73is" path="res://obrazky/postel_krvava.png" id="4_sh0mo"]
 [ext_resource type="Texture2D" uid="uid://cewmvlwejxsga" path="res://obrazky/robo_koncetina.png" id="5_vngxh"]
 [ext_resource type="Script" path="res://canvas_layer.gd" id="6_pa116"]
@@ -26,7 +27,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("%CharacterBody2D:scale")
+tracks/0/path = NodePath("../CharacterBody2D:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -38,7 +39,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("%CharacterBody2D:modulate")
+tracks/1/path = NodePath("../CharacterBody2D:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -53,7 +54,7 @@ resource_name = "propast"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("%CharacterBody2D:scale")
+tracks/0/path = NodePath("../CharacterBody2D:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -65,7 +66,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("%CharacterBody2D:modulate")
+tracks/1/path = NodePath("../CharacterBody2D:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -147,6 +148,13 @@ visible = false
 position = Vector2(55, 65)
 scale = Vector2(2.0566, 1.87719)
 texture = ExtResource("10_2fhim")
+
+[node name="DiraAudio" type="AudioStreamPlayer2D" parent="NavigationRegion2D/propast/Dira"]
+unique_name_in_owner = true
+stream = ExtResource("4_ilqag")
+volume_db = 20.0
+max_distance = 3000.0
+attenuation = 2.14355
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="NavigationRegion2D/propast"]
 libraries = {
@@ -240,18 +248,8 @@ position = Vector2(1733, 532)
 [node name="Ammo26" parent="NavigationRegion2D" instance=ExtResource("11_ch8b1")]
 position = Vector2(-323, -2532)
 
-[node name="CharacterBody2D" parent="NavigationRegion2D" instance=ExtResource("2_co45l")]
-unique_name_in_owner = true
-position = Vector2(9, 107)
-
-[node name="PointLight2D" type="PointLight2D" parent="NavigationRegion2D/CharacterBody2D"]
-position = Vector2(3, -3)
-rotation = -1.56719
-shadow_enabled = true
-texture = ExtResource("4_630ot")
-offset = Vector2(25, 120)
-
 [node name="Enemy" parent="NavigationRegion2D" node_paths=PackedStringArray("target") instance=ExtResource("4_ca23p")]
+position = Vector2(-4, -115)
 target = NodePath("../CharacterBody2D")
 
 [node name="Enemy2" parent="NavigationRegion2D" node_paths=PackedStringArray("target") instance=ExtResource("4_ca23p")]
@@ -382,6 +380,17 @@ target = NodePath("../CharacterBody2D")
 [node name="Enemy33" parent="NavigationRegion2D" node_paths=PackedStringArray("target") instance=ExtResource("4_ca23p")]
 position = Vector2(-940, -2474)
 target = NodePath("../CharacterBody2D")
+
+[node name="CharacterBody2D" parent="NavigationRegion2D" instance=ExtResource("2_co45l")]
+unique_name_in_owner = true
+position = Vector2(9, 107)
+
+[node name="PointLight2D" type="PointLight2D" parent="NavigationRegion2D/CharacterBody2D"]
+position = Vector2(3, -3)
+rotation = -1.56719
+shadow_enabled = true
+texture = ExtResource("4_630ot")
+offset = Vector2(25, 120)
 
 [node name="PostelKrvava" type="Sprite2D" parent="NavigationRegion2D"]
 position = Vector2(-304, 106)

@@ -12,6 +12,7 @@ extends CharacterBody2D
 @onready var navigation : NavigationAgent2D = $NavigationAgent2D
 
 var following := false
+var death := false
 
 
 var player = null
@@ -23,6 +24,9 @@ func _ready() -> void:
 		
 
 func _physics_process(delta: float) -> void:
+	if death:
+		return
+	
 	if not following and target:
 		var dist = global_position.distance_to(target.global_position)
 		if dist < 500:
@@ -44,11 +48,17 @@ func _physics_process(delta: float) -> void:
 
 func process_damage(value: int):
 	$DeathAudio.play()
-	visible = false
+	$Zombie.visible = false
+	$Zombie2.visible = false
+	%Krev.visible = true
+	%DmgAreaImg.visible = false
+	death = true
 	collision_layer = 0
 	collision_mask = 0
 
 func _on_dmg_area_2d_body_entered(body: Node2D) -> void:
+	if death:
+		return
 	if body.is_in_group("player"):
 		player = body
 		%DmgAreaImg.visible = true
@@ -57,6 +67,9 @@ func _on_dmg_area_2d_body_entered(body: Node2D) -> void:
 
 
 func _on_dmg_timer_timeout() -> void:
+	if death:
+		return
+		
 	$AnimatedSprite2D.set_animation("utok")
 	$AnimatedSprite2D.play()
 	
@@ -71,6 +84,8 @@ func _on_dmg_area_2d_body_exited(body: Node2D) -> void:
 
 
 func _on_animated_sprite_2d_animation_finished() -> void:
+	if death:
+		return
 	if $AnimatedSprite2D.animation == "utok":
 		$AnimatedSprite2D.set_animation("default")
 		$AnimatedSprite2D.play()
@@ -81,4 +96,5 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 
 
 func _on_death_audio_finished() -> void:
-	queue_free()
+	#queue_free()
+	pass

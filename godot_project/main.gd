@@ -6,6 +6,7 @@ extends Node2D
 func _ready() -> void:
 	var index = randi_range(0, propast_points.size()-1)
 	%propast.global_position = propast_points[index].global_position
+	%DiraAudio.play()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

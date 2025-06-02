@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bo0r70ejqfu7x"]
+[gd_scene load_steps=16 format=3 uid="uid://bo0r70ejqfu7x"]
 
 [ext_resource type="Script" path="res://enemy.gd" id="1_eoa08"]
 [ext_resource type="Texture2D" uid="uid://i3d4hsm3djba" path="res://obrazky/doge/doge1.png" id="2_deql3"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://b8a6k6ccn0xg3" path="res://zvuky/zraneni1.wav" id="9_cqjqs"]
 [ext_resource type="Texture2D" uid="uid://j8s8laue6kdt" path="res://zombie.png" id="10_hupya"]
 [ext_resource type="Texture2D" uid="uid://c1rlcgm3hubhk" path="res://zombie2.png" id="11_05d5p"]
+[ext_resource type="Texture2D" uid="uid://cnqapoin43yo7" path="res://obrazky/krev.png" id="12_aipeh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kl45v"]
 radius = 13.0384
@@ -116,6 +117,14 @@ position = Vector2(-12, -2)
 rotation = -1.57079
 scale = Vector2(0.0657363, 0.0657363)
 texture = ExtResource("11_05d5p")
+
+[node name="Krev" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+show_behind_parent = true
+position = Vector2(-2, 5.96046e-08)
+scale = Vector2(0.246688, 0.246688)
+texture = ExtResource("12_aipeh")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="DmgArea2D" to="." method="_on_dmg_area_2d_body_entered"]

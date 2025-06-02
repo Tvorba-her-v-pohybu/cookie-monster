@@ -234,7 +234,7 @@ input_left = "ui_left"
 input_right = "ui_right"
 
 [node name="MainChar" type="Sprite2D" parent="."]
-position = Vector2(23, 3.99998)
+position = Vector2(-3.84943, 5.15057)
 rotation = 7.85397
 scale = Vector2(0.0890132, 0.0890132)
 texture = ExtResource("2_uac8m")
@@ -259,13 +259,13 @@ libraries = {
 
 [node name="Teeth" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
-position = Vector2(18, -2)
+position = Vector2(-8.84943, -0.849411)
 rotation = 4.71239
 scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("3_v5su5")
 
 [node name="AttackArea" type="Area2D" parent="."]
-position = Vector2(22, -27)
+position = Vector2(-4.84943, -25.8494)
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
